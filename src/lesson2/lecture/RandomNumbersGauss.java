@@ -1,3 +1,9 @@
+/**
+ * Created by Nazar Horshevikov
+ * ISD - 13
+ * https://github.com/DaNaRim/dut-java
+ */
+
 package lesson2.lecture;
 
 public class RandomNumbersGauss {
