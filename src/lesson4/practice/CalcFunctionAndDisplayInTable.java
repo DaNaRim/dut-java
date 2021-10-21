@@ -16,14 +16,13 @@ public class CalcFunctionAndDisplayInTable {
         System.out.printf("%-" + width + "s", "n ^ 3");
         System.out.printf("%-" + width + "s%n", "2 ^ n");
 
-        BigInteger bi = new BigInteger("2");
         for (int i = 16; i <= 2048; i *= 2) {
             System.out.printf("%-" + width + "d", i);
             System.out.printf("%-" + width + "f", Math.log(i));
             System.out.printf("%-" + width + "f", i * Math.log(i));
             System.out.printf("%-" + width + "d", i * i);
             System.out.printf("%-" + width + "d", (long) i * i * i);
-            System.out.printf("%-" + width + "s%n", bi.pow(i));
+            System.out.printf("%-" + width + "s%n", new BigInteger("2").pow(i));
 //            System.out.printf("%-16d%n", (long) Math.pow(2, i));
         }
 
