@@ -9,6 +9,8 @@ public class Binary {
         int n = scanner.nextInt();
         scanner.close();
 
+//        System.out.println(Integer.toBinaryString(n));
+
         int powerOfTwo = 1;
 
         while (powerOfTwo <= n / 2) {
