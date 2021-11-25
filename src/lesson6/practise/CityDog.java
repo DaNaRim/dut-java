@@ -74,6 +74,6 @@ public class CityDog {
             }
         }
         System.out.println("Total exits " + exit + ", total dead ends " + deadEnds);
-        System.out.println("Exit chance " + (double) exit / (deadEnds + exit) * 100 + "%");
+        System.out.println("Exit chance " + (double) exit / tries * 100 + "%");
     }
 }
