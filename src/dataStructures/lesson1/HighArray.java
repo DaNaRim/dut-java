@@ -3,10 +3,9 @@
  * Nazar Horshevokov
  * 17.02.2022
  */
-
 package dataStructures.lesson1;
 
-class HighArray {
+public class HighArray {
     private long[] arr;
     private int nElems;
 

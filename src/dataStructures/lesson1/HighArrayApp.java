@@ -3,11 +3,9 @@
  * Nazar Horshevokov
  * 17.02.2022
  */
-
 package dataStructures.lesson1;
 
 public class HighArrayApp {
-
     public static void main(String[] args) {
         HighArray arr = new HighArray(50);
 
@@ -23,13 +21,8 @@ public class HighArrayApp {
         arr.insert(33);
 
         arr.printArray();
-
         arr.find(77);
-
-        arr.delete(444);
-        arr.delete(55);
-        arr.delete(9911);
-
+        arr.delete(33);
         arr.printArray();
     }
 }

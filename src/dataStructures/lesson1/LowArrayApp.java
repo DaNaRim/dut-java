@@ -3,7 +3,6 @@
  * Nazar Horshevokov
  * 17.02.2022
  */
-
 package dataStructures.lesson1;
 
 public class LowArrayApp {
@@ -24,12 +23,9 @@ public class LowArrayApp {
         nElems = 10;
 
         printArray();
-
         find(55);
         find(260);
-
         delete(55);
-
         printArray();
     }
 
@@ -40,7 +36,7 @@ public class LowArrayApp {
                 arr.setElem(j, arr.getElem(j + 1));
             }
             nElems--;
-            System.out.println(value + " deleted");
+            System.out.println("Deleted " + value);
             return;
         }
         System.out.println("Can't delete: " + value + " not found");

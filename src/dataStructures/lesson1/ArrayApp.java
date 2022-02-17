@@ -3,10 +3,9 @@
  * Nazar Horshevokov
  * 17.02.2022
  */
-
 package dataStructures.lesson1;
 
-class ArrayApp {
+public class ArrayApp {
     static long[] arr = new long[50];
     static int nElems;
 
@@ -24,12 +23,9 @@ class ArrayApp {
         nElems = 10;
 
         printArray();
-
         find(22);
         find(220);
-
         delete(11);
-
         printArray();
     }
 
@@ -40,7 +36,7 @@ class ArrayApp {
                 arr[j] = arr[j + 1];
             }
             nElems--;
-            System.out.println(value + " deleted");
+            System.out.println("Deleted " + value);
             return;
         }
         System.out.println("Can't delete: " + value + " not found");

@@ -3,10 +3,9 @@
  * Nazar Horshevokov
  * 17.02.2022
  */
-
 package dataStructures.lesson1;
 
-class LowArray {
+public class LowArray {
     private long[] arr;
 
     public LowArray(int size) {
@@ -20,5 +19,4 @@ class LowArray {
     public long getElem(int index) {
         return arr[index];
     }
-
 }
