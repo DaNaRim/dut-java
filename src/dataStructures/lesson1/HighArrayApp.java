@@ -1,9 +1,15 @@
+/**
+ * ISD13
+ * Nazar Horshevokov
+ * 17.02.2022
+ */
+
 package dataStructures.lesson1;
 
 public class HighArrayApp {
 
     public static void main(String[] args) {
-        HighArray arr = new HighArray(100);
+        HighArray arr = new HighArray(50);
 
         arr.insert(77);
         arr.insert(99);
@@ -16,19 +22,14 @@ public class HighArrayApp {
         arr.insert(66);
         arr.insert(33);
 
-        arr.display();
+        arr.printArray();
 
-        int searchKey = 35;
-        if (arr.find(searchKey)) {
-            System.out.println("Found " + searchKey);
-        } else {
-            System.out.println("Can't find " + searchKey);
-        }
+        arr.find(77);
 
-        arr.delete(0);
+        arr.delete(444);
         arr.delete(55);
-        arr.delete(99);
+        arr.delete(9911);
 
-        arr.display();
+        arr.printArray();
     }
 }

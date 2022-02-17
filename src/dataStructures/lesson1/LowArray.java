@@ -1,20 +1,24 @@
+/**
+ * ISD13
+ * Nazar Horshevokov
+ * 17.02.2022
+ */
+
 package dataStructures.lesson1;
 
 class LowArray {
-    private long[] a;
+    private long[] arr;
 
     public LowArray(int size) {
-        a = new long[size];
+        arr = new long[size];
     }
 
     public void setElem(int index, long value) {
-        a[index] = value;
+        arr[index] = value;
     }
 
     public long getElem(int index) {
-        return a[index];
+        return arr[index];
     }
 
 }
-
-

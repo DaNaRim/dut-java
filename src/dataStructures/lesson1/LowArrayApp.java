@@ -1,11 +1,16 @@
+/**
+ * ISD13
+ * Nazar Horshevokov
+ * 17.02.2022
+ */
+
 package dataStructures.lesson1;
 
 public class LowArrayApp {
-    public static void main(String[] args) {
-        LowArray arr = new LowArray(100);
-        int nElems;
-        int j;
+    static LowArray arr = new LowArray(50);
+    static int nElems = 0;
 
+    public static void main(String[] args) {
         arr.setElem(0, 77);
         arr.setElem(1, 99);
         arr.setElem(2, 44);
@@ -18,32 +23,43 @@ public class LowArrayApp {
         arr.setElem(9, 33);
         nElems = 10;
 
-        for (j = 0; j < nElems; j++) {
-            System.out.print(arr.getElem(j) + " ");
-        }
-        System.out.println("");
+        printArray();
 
-        int searchKey = 26;
-        for (j = 0; j < nElems; j++) {
-            if (arr.getElem(j) == searchKey) break;
-        }
-        if (j == nElems) {
-            System.out.println("Can't find " + searchKey);
-        } else {
-            System.out.println("Found " + searchKey);
-        }
+        find(55);
+        find(260);
 
-        for (j = 0; j < nElems; j++) {
-            if (arr.getElem(j) == 55) break;
-        }
-        for (int k = j; k < nElems; k++) {
-            arr.setElem(k, arr.getElem(k + 1));
-        }
-        nElems--;
+        delete(55);
 
-        for (j = 0; j < nElems; j++) {
-            System.out.print(arr.getElem(j) + " ");
+        printArray();
+    }
+
+    private static void delete(int value) {
+        for (int i = 0; i < nElems; i++) {
+            if (arr.getElem(i) != value) continue;
+            for (int j = i; j < nElems; j++) {
+                arr.setElem(j, arr.getElem(j + 1));
+            }
+            nElems--;
+            System.out.println(value + " deleted");
+            return;
         }
-        System.out.println("");
+        System.out.println("Can't delete: " + value + " not found");
+    }
+
+    private static void find(int value) {
+        for (int i = 0; i < nElems; i++) {
+            if (arr.getElem(i) != value) continue;
+            System.out.println("Found " + value + ", index " + i);
+            return;
+        }
+        System.out.println("Can't find " + value);
+    }
+
+    private static void printArray() {
+        System.out.print("[");
+        for (int i = 0; i < nElems; i++) {
+            System.out.print(arr.getElem(i) + ", ");
+        }
+        System.out.println("\b\b]");
     }
 }

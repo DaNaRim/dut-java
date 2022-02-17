@@ -1,13 +1,16 @@
+/**
+ * ISD13
+ * Nazar Horshevokov
+ * 17.02.2022
+ */
+
 package dataStructures.lesson1;
 
 class ArrayApp {
-    public static void main(String[] args) {
-        long[] arr;
-        arr = new long[100];
-        int nElems;
-        int j;
-        long searchKey;
+    static long[] arr = new long[50];
+    static int nElems;
 
+    public static void main(String[] args) {
         arr[0] = 77;
         arr[1] = 99;
         arr[2] = 44;
@@ -20,34 +23,43 @@ class ArrayApp {
         arr[9] = 33;
         nElems = 10;
 
-        for (j = 0; j < nElems; j++) {
-            System.out.print(arr[j] + " ");
-        }
-        System.out.println("");
+        printArray();
 
-        searchKey = 66;
-        for (j = 0; j < nElems; j++) {
-            if (arr[j] == searchKey) {
-                if (j == nElems) {
-                    System.out.println("Can't find " + searchKey);
-                } else {
-                    System.out.println("Found " + searchKey);
-                }
+        find(22);
+        find(220);
+
+        delete(11);
+
+        printArray();
+    }
+
+    private static void delete(int value) {
+        for (int i = 0; i < nElems; i++) {
+            if (arr[i] != value) continue;
+            for (int j = i; j < nElems; j++) {
+                arr[j] = arr[j + 1];
             }
+            nElems--;
+            System.out.println(value + " deleted");
+            return;
         }
+        System.out.println("Can't delete: " + value + " not found");
+    }
 
-        searchKey = 55;
-        for (j = 0; j < nElems; j++) {
-            if (arr[j] == searchKey) break;
+    private static void find(int value) {
+        for (int i = 0; i < nElems; i++) {
+            if (arr[i] != value) continue;
+            System.out.println("Found " + value + ", index " + i);
+            return;
         }
-        for (int k = j; k < nElems; k++) {
-            arr[k] = arr[k + 1];
-        }
-        nElems--;
+        System.out.println("Can't find " + value);
+    }
 
-        for (j = 0; j < nElems; j++) {
-            System.out.print(arr[j] + " ");
+    private static void printArray() {
+        System.out.print("[");
+        for (int i = 0; i < nElems; i++) {
+            System.out.print(arr[i] + ", ");
         }
-        System.out.println("");
+        System.out.println("\b\b]");
     }
 }
