@@ -32,6 +32,9 @@ public class DisplayGraphWithTime {
         for (int i = 0; i < array.length; i++) {
             array[i] = i + 1;
         }
+        StdDraw.setXscale(X_MIN, X_MAX);
+        StdDraw.setYscale(Y_MIN, Y_MAX);
+        printCoordinateLines();
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -66,10 +69,6 @@ public class DisplayGraphWithTime {
     }
 
     private static void run() {
-        StdDraw.setXscale(X_MIN, X_MAX);
-        StdDraw.setYscale(Y_MIN, Y_MAX);
-        printCoordinateLines();
-
         printGraph(pointsXY1, Color.RED);
         printGraph(pointsXY2, Color.BLUE);
         printGraph(pointsXY3, Color.GREEN);
@@ -78,12 +77,12 @@ public class DisplayGraphWithTime {
         System.out.println("Complete");
     }
 
-    private static void printGraph(long[][] pointXY, Color color) {
+    private static void printGraph(long[][] pointsXY, Color color) {
         StdDraw.setPenColor(color);
         StdDraw.setPenRadius(0.008);
 
-        for (int i = 0; i < pointXY[0].length; i++) {
-            StdDraw.point(pointXY[0][i], pointXY[1][i]);
+        for (int i = 0; i < pointsXY[0].length; i++) {
+            StdDraw.point(pointsXY[0][i], pointsXY[1][i]);
         }
     }
 
