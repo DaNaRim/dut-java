@@ -1,6 +1,6 @@
 /**
  * ISD13
- * Nazar Horshevokov
+ * Nazar Horshevikov
  * 17.02.2022
  */
 package dataStructures.lesson1;
