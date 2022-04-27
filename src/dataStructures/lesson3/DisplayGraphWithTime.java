@@ -21,10 +21,10 @@ public class DisplayGraphWithTime {
     private static final int X_MAX = ARRAY_LENGTH + BORDER;
     private static final int Y_MAX = MAX_TIME_TO_DRAW_IT + BORDER;
 
-    private static volatile long[][] pointsXY1;
-    private static volatile long[][] pointsXY2;
-    private static volatile long[][] pointsXY3;
-    private static volatile long[][] pointsXY4;
+    private static volatile long[] timeArray1;
+    private static volatile long[] timeArray2;
+    private static volatile long[] timeArray3;
+    private static volatile long[] timeArray4;
 
     private static final int[] array = new int[ARRAY_LENGTH];
 
@@ -45,18 +45,18 @@ public class DisplayGraphWithTime {
     }
 
     private static void runInSingleThread() {
-        pointsXY1 = linearSearch1();
-        pointsXY2 = linearSearch2();
-        pointsXY3 = linearSearch3();
-        pointsXY4 = binarySearch();
+        timeArray1 = linearSearch1();
+        timeArray2 = linearSearch2();
+        timeArray3 = linearSearch3();
+        timeArray4 = binarySearch();
         run();
     }
 
     private static void runInFewThreads() throws InterruptedException {
-        Thread t1 = new Thread(() -> pointsXY1 = linearSearch1());
-        Thread t2 = new Thread(() -> pointsXY2 = linearSearch2());
-        Thread t3 = new Thread(() -> pointsXY3 = linearSearch3());
-        Thread t4 = new Thread(() -> pointsXY4 = binarySearch());
+        Thread t1 = new Thread(() -> timeArray1 = linearSearch1());
+        Thread t2 = new Thread(() -> timeArray2 = linearSearch2());
+        Thread t3 = new Thread(() -> timeArray3 = linearSearch3());
+        Thread t4 = new Thread(() -> timeArray4 = binarySearch());
         t1.start();
         t2.start();
         t3.start();
@@ -69,20 +69,20 @@ public class DisplayGraphWithTime {
     }
 
     private static void run() {
-        printGraph(pointsXY1, Color.RED);
-        printGraph(pointsXY2, Color.BLUE);
-        printGraph(pointsXY3, Color.GREEN);
-        printGraph(pointsXY4, Color.YELLOW);
+        printGraph(timeArray1, Color.RED);
+        printGraph(timeArray2, Color.BLUE);
+        printGraph(timeArray3, Color.GREEN);
+        printGraph(timeArray4, Color.YELLOW);
 
         System.out.println("Complete");
     }
 
-    private static void printGraph(long[][] pointsXY, Color color) {
+    private static void printGraph(long[] timeArray, Color color) {
         StdDraw.setPenColor(color);
         StdDraw.setPenRadius(0.008);
 
-        for (int i = 0; i < pointsXY[0].length; i++) {
-            StdDraw.point(pointsXY[0][i], pointsXY[1][i]);
+        for (int i = 0; i < timeArray.length; i++) {
+            StdDraw.point(i, timeArray[i]);
         }
     }
 
@@ -113,12 +113,11 @@ public class DisplayGraphWithTime {
         StdDraw.text(ARRAY_LENGTH, -lineIndent, Integer.toString(ARRAY_LENGTH));
     }
 
-    private static long[][] linearSearch1() {
-        long[][] pointXY = new long[2][ARRAY_LENGTH];
+    private static long[] linearSearch1() {
+        long[] timeArray = new long[ARRAY_LENGTH];
 
         long time;
         for (int i = 0; i < array.length; i++) {
-            pointXY[0][i] = i;
 
             int searchEl = array[i];
             long start = System.nanoTime();
@@ -129,17 +128,16 @@ public class DisplayGraphWithTime {
                 }
             }
             time = System.nanoTime() - start;
-            pointXY[1][i] = time;
+            timeArray[i] = time;
         }
-        return pointXY;
+        return timeArray;
     }
 
-    private static long[][] linearSearch2() {
-        long[][] pointXY = new long[2][array.length];
+    private static long[] linearSearch2() {
+        long[] timeArray = new long[array.length];
 
         long time = 0;
         for (int i = 0; i < array.length; i++) {
-            pointXY[0][i] = i;
 
             int searchEl = array[i];
             long start = System.nanoTime();
@@ -151,19 +149,17 @@ public class DisplayGraphWithTime {
                     break;
                 }
             }
-            pointXY[1][i] = time;
+            timeArray[i] = time;
         }
-        return pointXY;
+        return timeArray;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
-    private static long[][] linearSearch3() {
-        long[][] pointXY = new long[2][array.length];
+    private static long[] linearSearch3() {
+        long[] timeArray = new long[array.length];
 
         long time = 0;
         for (int i = 0; i < array.length; i++) {
-            pointXY[0][i] = i;
-
             int searchEl = array[i];
 
             long start = System.nanoTime();
@@ -174,21 +170,19 @@ public class DisplayGraphWithTime {
                 time = System.nanoTime() - start;
                 System.out.println("linearSearch3: Element " + searchEl + " was found. Runtime: " + time + " nanos");
             }
-            pointXY[1][i] = time;
+            timeArray[i] = time;
         }
-        return pointXY;
+        return timeArray;
     }
 
-    private static long[][] binarySearch() {
-        long[][] pointXY = new long[2][array.length];
+    private static long[] binarySearch() {
+        long[] timeArray = new long[array.length];
 
         int[] sortedArray = array.clone();
         Arrays.sort(sortedArray);
 
         long time = 0;
         for (int i = 0; i < sortedArray.length; i++) {
-            pointXY[0][i] = i;
-
             int searchEl = sortedArray[i];
 
             Arrays.sort(array);
@@ -209,8 +203,8 @@ public class DisplayGraphWithTime {
                     break;
                 }
             }
-            pointXY[1][i] = time;
+            timeArray[i] = time;
         }
-        return pointXY;
+        return timeArray;
     }
 }

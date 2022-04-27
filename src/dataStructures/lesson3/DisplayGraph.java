@@ -8,7 +8,6 @@ package dataStructures.lesson3;
 import dataStructures.StdDraw;
 
 import java.awt.*;
-import java.util.Arrays;
 
 public class DisplayGraph {
 
@@ -35,15 +34,14 @@ public class DisplayGraph {
         printGraph(linearSearch1(), Color.RED);
         printGraph(linearSearch2(), Color.BLUE);
         printGraph(linearSearch3(), Color.GREEN);
-        printGraph(binarySearch(), Color.YELLOW);
     }
 
-    private static void printGraph(int[][] pointXY, Color color) {
+    private static void printGraph(int[] timeArray, Color color) {
         StdDraw.setPenColor(color);
         StdDraw.setPenRadius(0.008);
 
-        for (int i = 0; i < pointXY[0].length; i++) {
-            StdDraw.point(pointXY[0][i], pointXY[1][i]);
+        for (int i = 0; i < timeArray.length; i++) {
+            StdDraw.point(i, timeArray[i]);
         }
     }
 
@@ -72,12 +70,10 @@ public class DisplayGraph {
         StdDraw.text(ARRAY_LENGTH - 1, -lineIndent, Integer.toString(ARRAY_LENGTH - 1));
     }
 
-    private static int[][] linearSearch1() {
-        int[][] pointXY = new int[2][array.length];
+    private static int[] linearSearch1() {
+        int[] timeArray = new int[array.length];
 
         for (int i = 0; i < array.length; i++) {
-            pointXY[0][i] = i;
-
             int searchEl = array[i];
             int counter = 0;
             for (int el : array) {
@@ -86,18 +82,16 @@ public class DisplayGraph {
                     System.out.print("linearSearch1: Element " + searchEl + " was found. ");
                 }
             }
-            pointXY[1][i] = counter;
+            timeArray[i] = counter;
             System.out.println("Number of comparisons is " + counter);
         }
-        return pointXY;
+        return timeArray;
     }
 
-    private static int[][] linearSearch2() {
-        int[][] pointXY = new int[2][array.length];
+    private static int[] linearSearch2() {
+        int[] timeArray = new int[array.length];
 
         for (int i = 0; i < array.length; i++) {
-            pointXY[0][i] = i;
-
             int searchEl = array[i];
             int counter = 0;
             for (int el : array) {
@@ -108,19 +102,16 @@ public class DisplayGraph {
                     break;
                 }
             }
-            pointXY[1][i] = counter;
+            timeArray[i] = counter;
         }
-        return pointXY;
+        return timeArray;
     }
 
-    private static int[][] linearSearch3() {
-        int[][] pointXY = new int[2][array.length];
+    private static int[] linearSearch3() {
+        int[] timeArray = new int[array.length];
 
         for (int i = 0; i < array.length; i++) {
-            pointXY[0][i] = i;
-
             int searchEl = array[i];
-
             int counter = 0;
             int j;
             for (j = 0; array[j] != searchEl; j++) {
@@ -130,40 +121,9 @@ public class DisplayGraph {
                 System.out.println("linearSearch3: Element " + searchEl
                         + " was found. Number of comparisons is " + counter);
             }
-            pointXY[1][i] = counter;
+            timeArray[i] = counter;
         }
-        return pointXY;
+        return timeArray;
     }
 
-    private static int[][] binarySearch() {
-        int[][] pointXY = new int[2][array.length];
-
-        for (int i = 0; i < array.length; i++) {
-            pointXY[0][i] = i;
-
-            int searchEl = array[i];
-
-            Arrays.sort(array);
-            int counter = 0;
-
-            int low = 0;
-            int high = array.length;
-
-            while (low <= high) {
-                int mid = low + ((high - low) / 2);
-                if (array[mid] < searchEl) {
-                    low = mid + 1;
-                } else if (array[mid] > searchEl) {
-                    high = mid - 1;
-                } else { //array[mid] == key
-                    System.out.println("binarySearch: Element " + searchEl + " was found."
-                            + " Number of comparisons is " + counter);
-                    break;
-                }
-                counter++;
-            }
-            pointXY[1][i] = counter;
-        }
-        return pointXY;
-    }
 }
