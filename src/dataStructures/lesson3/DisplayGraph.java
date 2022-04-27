@@ -36,12 +36,12 @@ public class DisplayGraph {
         printGraph(linearSearch3(), Color.GREEN);
     }
 
-    private static void printGraph(int[] timeArray, Color color) {
+    private static void printGraph(int[] counterArray, Color color) {
         StdDraw.setPenColor(color);
         StdDraw.setPenRadius(0.008);
 
-        for (int i = 0; i < timeArray.length; i++) {
-            StdDraw.point(i, timeArray[i]);
+        for (int i = 0; i < counterArray.length; i++) {
+            StdDraw.point(i, counterArray[i]);
         }
     }
 
@@ -71,7 +71,7 @@ public class DisplayGraph {
     }
 
     private static int[] linearSearch1() {
-        int[] timeArray = new int[array.length];
+        int[] counterArray = new int[array.length];
 
         for (int i = 0; i < array.length; i++) {
             int searchEl = array[i];
@@ -82,14 +82,14 @@ public class DisplayGraph {
                     System.out.print("linearSearch1: Element " + searchEl + " was found. ");
                 }
             }
-            timeArray[i] = counter;
+            counterArray[i] = counter;
             System.out.println("Number of comparisons is " + counter);
         }
-        return timeArray;
+        return counterArray;
     }
 
     private static int[] linearSearch2() {
-        int[] timeArray = new int[array.length];
+        int[] counterArray = new int[array.length];
 
         for (int i = 0; i < array.length; i++) {
             int searchEl = array[i];
@@ -102,13 +102,13 @@ public class DisplayGraph {
                     break;
                 }
             }
-            timeArray[i] = counter;
+            counterArray[i] = counter;
         }
-        return timeArray;
+        return counterArray;
     }
 
     private static int[] linearSearch3() {
-        int[] timeArray = new int[array.length];
+        int[] counterArray = new int[array.length];
 
         for (int i = 0; i < array.length; i++) {
             int searchEl = array[i];
@@ -121,9 +121,9 @@ public class DisplayGraph {
                 System.out.println("linearSearch3: Element " + searchEl
                         + " was found. Number of comparisons is " + counter);
             }
-            timeArray[i] = counter;
+            counterArray[i] = counter;
         }
-        return timeArray;
+        return counterArray;
     }
 
 }
